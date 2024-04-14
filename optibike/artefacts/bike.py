@@ -26,6 +26,8 @@ class Bike:
     def update_rack(self, new_rack):
         self.rack = new_rack
 
+    def is_bike_locked(self):
+        return self.is_locked
         
 
 

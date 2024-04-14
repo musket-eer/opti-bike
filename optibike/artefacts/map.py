@@ -19,3 +19,7 @@ class Map:
         # Use reverse geocoding to get the name of the building
         reverse_geocode_result = self.gmaps.reverse_geocode(location)
         return reverse_geocode_result[0]['formatted_address']
+    
+
+
+    # add bike rack. 
