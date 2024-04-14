@@ -45,7 +45,8 @@ def bike_request(request):
 
 def bike_options(request):
     bike_options = GLOBAL_QUEUE.get_sorted_requests()
-    return HttpResponse(f"here are your options, {bike_options}")
+    print(bike_options)
+    return render(request, 'options.html', {'bike_options': bike_options})
 
 
 #     if request.method == 'POST':

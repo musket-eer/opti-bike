@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <title>Bike Request</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        .green-bg { background-color: #e8f5e9; }
+        .green-text { color: #1b5e20; }
+        .button-bg { background-color: #4caf50; } /* A vivid green color for the button */
+        .button-text { color: #ffffff; }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="max-w-lg w-full bg-white p-8 rounded-xl shadow-md">
-        <h1 class="text-2xl font-bold mb-8 text-center">Bicycle Request Form</h1>
+    <div class="max-w-lg w-full bg-white p-8 rounded-xl shadow-md green-bg">
+        <h1 class="text-2xl font-bold mb-8 text-center green-text">Bicycle Request Form</h1>
         <!-- Ensure the form's action is correct as per your Django URL configuration -->
         <form action="/request/" method="POST">
             {% csrf_token %}  <!-- Include the CSRF token inside the form -->
             <div class="mb-4">
-                <label for="email" class="block mb-2">Email:</label>
+                <label for="email" class="block mb-2 green-text">Email:</label>
                 <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
-                <label for="location" class="block mb-2">Location:</label>
+                <label for="location" class="block mb-2 green-text">Location:</label>
                 <input type="text" id="location" name="location" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
-                <label for="timeFrom">Time From:</label>
-                <input type="time" id="timeFrom" name="time_from" required>
+                <label for="timeFrom" class="block mb-2 green-text">Time From:</label>
+                <input type="time" id="timeFrom" name="time_from" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
             <div class="mb-4">
-                <label for="timeTo">Time To:</label>
-                <input type="time" id="timeTo" name="time_to" required>
+                <label for="timeTo" class="block mb-2 green-text">Time To:</label>
+                <input type="time" id="timeTo" name="time_to" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             </div>
-
-    <button type="submit">Submit</button>
+            <button type="submit" class="w-full py-2 rounded-md text-white button-bg button-text">Submit</button>
         </form>
     </div>
 </body>
@@ -36,33 +41,3 @@
 
 
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Bicycle Request Form</title>
-</head>
-<body>
-    <h1>Bicycle Request Form</h1>
-    <form action="/submit-bicycle-request" method="POST">
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-        </div>
-        <div>
-            <label for="timeFrom">Time From:</label>
-            <input type="time" id="timeFrom" name="timeFrom" required>
-        </div>
-        <div>
-            <label for="timeTo">Time To:</label>
-            <input type="time" id="timeTo" name="timeTo" required>
-        </div>
-        <button type="submit">Submit Request</button>
-    </form>
-</body>
-</html> -->

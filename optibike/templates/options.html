@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            color: #1b5e20; /* Dark green text */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #c8e6c9; /* Slightly darker green for items */
+        }
+    </style>
+</head>
+<body>
+    <h1>Here are your options:</h1>
+    <ul>
+        {% for email, bikes in bike_options.items %}
+        <h2>Options for {{ email }}:</h2>
+        <ul>
+            {% for bike in bikes %}
+                <li>{{ bike }}</li>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <p>No bikes available at the moment.</p>
+    {% endfor %}
+    </ul>
+</body>
+</html>
