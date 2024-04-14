@@ -29,11 +29,11 @@ class Bike:
         
 
 
-# Example usage:
-bike1 = Bike("ABC123", "5678")
-bike1.assign_user("user@example.com")
-print(bike1.user_email_map)
-print(bike1.rack())
-print(bike1.lock())
-bike1.repair()
-print(bike1.needs_repair)
+# # Example usage:
+# bike1 = Bike("ABC123", "5678", "edmunds")
+# bike1.assign_user("user@example.com")
+# print(bike1.user)
+# print(bike1.rack())
+# print(bike1.lock())
+# bike1.repair()
+# print(bike1.needs_repair)
