@@ -1,4 +1,4 @@
-class matching_alg:
+class MatchingAlgorithm:
     def __init__(self, bikes):
         self.bikes = bikes  # A list of Bike instances
 

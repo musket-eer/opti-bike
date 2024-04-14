@@ -1,25 +1,32 @@
-class need_repair:
-    def __init__(self):
-        self.needs_repair = False
-        self.locked = False
+class BikeRepair:
+    needs_repair = False
+    locked = False
 
-    def press_repair_button(self):
-        self.needs_repair = True
-        self.locked = True
+    @classmethod
+    def press_repair_button(cls):
+        cls.needs_repair = True
+        cls.locked = True
 
-    def unlock(self, admin_password):
+    @classmethod
+    def unlock(cls, admin_password):
         if admin_password == "admin123":
-            self.locked = False
+            cls.locked = False
         else:
             print("Unauthorized access. Only the admin can unlock the bike.")
 
+
+
+
+
+
+#__________________________________IGNORE_________________________________________________________________________________________________
 # Example usage:
-bike = need_repair()
-bike.press_repair_button()
-print(bike.needs_repair)  # Output: True
-print(bike.locked)  # Output: True
+BikeRepair.press_repair_button()
+print(BikeRepair.needs_repair)  # Output: True
+print(BikeRepair.locked)        # Output: True
 
-bike.unlock("admin123")
-print(bike.locked)  # Output: False
+BikeRepair.unlock("admin123")
+print(BikeRepair.locked)        # Output: False
 
-bike.unlock("wrong_password")  # Output: Unauthorized access. Only the admin can unlock the bike.
+BikeRepair.unlock("wrong_password")  # Output: Unauthorized access. Only the admin can unlock the bike.
+

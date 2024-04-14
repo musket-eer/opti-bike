@@ -1,37 +1,22 @@
-class Queue:
-    def __init__(self):
-        self.queue = []
+from matching_alg import MatchingAlgorithm
 
-    def enqueue(self, bike_requester):
-        self.queue.append(bike_requester)
+class UserQueue:
+    def __init__(self, requests=None):
+        self.requests = requests if requests is not None else []
 
-    def dequeue(self):
-        if not self.is_empty():
-            return self.queue.pop(0)
+    def add_request(self, request):
+        self.requests.append(request)
 
-    def is_empty(self):
-        return len(self.queue) == 0
+    def get_sorted_requests(self, sort_by='start'):
+        if sort_by == 'start':
+            return sorted(self.requests, key=lambda r: r.start_time)
+        elif sort_by == 'end':
+            return sorted(self.requests, key=lambda r: r.end_time)
+        else:
+            raise ValueError("Invalid sort_by value. Use 'start' or 'end'.")
 
-    def size(self):
-        return len(self.queue)
 
 
-class MatchingAlgorithm:
-    def __init__(self):
-        self.queue = Queue()
-
-    def add_bike_requester(self, bike_requester):
-        self.queue.enqueue(bike_requester)
-
-    def decide_matching(self):
-        while not self.queue.is_empty():
-            bike_requester = self.queue.dequeue()
-            # Perform matching algorithm logic here
-            # Decide who can take what bike based on certain criteria
-            # You can implement your own logic based on your requirements
-            print(f"Matching algorithm: Assigning bike to {bike_requester}")
-
-# Example usage
 matching_alg = MatchingAlgorithm()
 matching_alg.add_bike_requester("John")
 matching_alg.add_bike_requester("Alice")
