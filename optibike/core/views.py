@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponse
-from artefacts import bike, email_verifier
+from artefacts import bike, email_verifier, queue
 from .forms import BicycleRequestForm
 
+
+GLOBAL_QUEUE = queue.UserQueue()
 
 def home(request):
     return HttpResponse("This is the homepage")
@@ -12,17 +14,22 @@ def home(request):
 def bike_request(request):
     if request.method == 'POST':
         form = BicycleRequestForm(request.POST)
-        print(form.is_valid())
+        print(form)
         if form.is_valid():
             verifier = email_verifier.EmailVerifier()
 
             # Process the data in form.cleaned_data
             # Example: send this data to a queue
             email = form.cleaned_data['email']
-            print(email + " \n")
+            location = form.cleaned_data['location']
+            time_from = form.cleaned_data['time_from']
+            time_to = form.cleaned_data['time_to']
+            print(email, location, time_from, time_to, " \n")
             print("just before we verify the email")
             if verifier.verify_email(email):
-                return HttpResponse('Request submitted successfully!')
+                GLOBAL_QUEUE.add_request((email, location, time_from, time_to))
+
+                return redirect('/options')
             else:
                 return HttpResponse('Invalid email')
         else:
@@ -37,8 +44,8 @@ def bike_request(request):
 
 
 def bike_options(request):
-
-    return HttpResponse("here are your options")
+    bike_options = GLOBAL_QUEUE.get_sorted_requests()
+    return HttpResponse(f"here are your options, {bike_options}")
 
 
 #     if request.method == 'POST':

@@ -14,7 +14,7 @@ class Bike:
         self.user = user
 
     def lock(self):
-        self.lock  =True
+        self.is_locked  =True
 
     def repair(self):
         self.needs_repair = True
