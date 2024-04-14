@@ -1,5 +1,3 @@
-from matching_alg import MatchingAlgorithm
-
 class UserQueue:
     def __init__(self, requests=None):
         self.requests = requests if requests is not None else []
@@ -15,10 +13,3 @@ class UserQueue:
         else:
             raise ValueError("Invalid sort_by value. Use 'start' or 'end'.")
 
-
-
-matching_alg = MatchingAlgorithm()
-matching_alg.add_bike_requester("John")
-matching_alg.add_bike_requester("Alice")
-matching_alg.add_bike_requester("Bob")
-matching_alg.decide_matching()

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bicycle Request Form</title>
+</head>
+<body>
+    <h1>Bicycle Request Form</h1>
+    <form action="/submit-bicycle-request" method="POST">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div>
+            <label for="timeFrom">Time From:</label>
+            <input type="time" id="timeFrom" name="timeFrom" required>
+        </div>
+        <div>
+            <label for="timeTo">Time To:</label>
+            <input type="time" id="timeTo" name="timeTo" required>
+        </div>
+        <button type="submit">Submit Request</button>
+    </form>
+</body>
+</html>

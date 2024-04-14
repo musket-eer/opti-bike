@@ -55,7 +55,7 @@ ROOT_URLCONF = 'optibike.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Path to project-level templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
