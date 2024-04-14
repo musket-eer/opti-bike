@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponse
-from artefacts import bike
+from artefacts import bike, email_verifier
 from .forms import BicycleRequestForm
+
 
 def home(request):
     return HttpResponse("This is the homepage")
@@ -11,14 +12,25 @@ def home(request):
 def bike_request(request):
     if request.method == 'POST':
         form = BicycleRequestForm(request.POST)
+        print(form.is_valid())
         if form.is_valid():
+            verifier = email_verifier.EmailVerifier()
+
             # Process the data in form.cleaned_data
             # Example: send this data to a queue
-            return HttpResponse('Request submitted successfully!')
+            email = form.cleaned_data['email']
+            print(email + " \n")
+            print("just before we verify the email")
+            if verifier.verify_email(email):
+                return HttpResponse('Request submitted successfully!')
+            else:
+                return HttpResponse('Invalid email')
         else:
+            print(form.errors)
             return HttpResponse('Invalid form data', status=400)
     else:
         form = BicycleRequestForm()
+        print("form not filled")
         return render(request, 'core/request.html', {'form': form})
     
 
