@@ -3,6 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Bicycle Request Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-lg w-full bg-white p-8 rounded-xl shadow-md">
+        <h1 class="text-2xl font-bold mb-8 text-center">Bicycle Request Form</h1>
+        <form action="/submit-bicycle-request" method="POST">
+            <div class="mb-4">
+                <label for="email" class="block mb-2">Email:</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="location" class="block mb-2">Location:</label>
+                <input type="text" id="location" name="location" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="timeFrom" class="block mb-2">Time From:</label>
+                <input type="time" id="timeFrom" name="timeFrom" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-6">
+                <label for="timeTo" class="block mb-2">Time To:</label>
+                <input type="time" id="timeTo" name="timeTo" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Submit Request</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bicycle Request Form</title>
 </head>
 <body>
     <h1>Bicycle Request Form</h1>
@@ -26,4 +62,4 @@
         <button type="submit">Submit Request</button>
     </form>
 </body>
-</html>
+</html> -->
